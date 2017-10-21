@@ -27,7 +27,10 @@ def get_json(url):
     """ Send GET requests and return JSON."""
     headers = {'User-Agent': _USER_AGENT}
     r = requests.get(url, headers=headers)
-    return r.json
+    if r.status_code == requests.codes.ok:
+        return r.json
+    else:
+        return None
 
 
 def get_soup(url):
