@@ -28,7 +28,7 @@ def get_json(url):
     headers = {'User-Agent': _USER_AGENT}
     r = requests.get(url, headers=headers)
     if r.status_code == requests.codes.ok:
-        return r.json
+        return r.json()
     else:
         return None
 
