@@ -15,12 +15,16 @@ _USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KH
                "Chrome/61.0.3163.100 Safari/537.36")
 
 
-def get(url):
+def get(url, origin=False):
     """ Send GET requests and return encoded html."""
     headers = {'User-Agent': _USER_AGENT}
     r = requests.get(url, headers=headers)
     r.encoding = _get_coding(r)
-    return r.text
+    if origin:
+        return r.content
+
+    else:
+        return r.text
 
 
 def get_json(url):
@@ -35,7 +39,7 @@ def get_json(url):
 
 def get_soup(url):
     """ Send GET requests and directly parsed by BeautifulSoup"""
-    html = get(url)
+    html = get(url, origin=True)
     soup = bs(html, "html.parser")
     return soup
 
