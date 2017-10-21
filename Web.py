@@ -23,6 +23,13 @@ def get(url):
     return r.text
 
 
+def get_json(url):
+    """ Send GET requests and return JSON."""
+    headers = {'User-Agent': _USER_AGENT}
+    r = requests.get(url, headers=headers)
+    return r.json
+
+
 def get_soup(url):
     """ Send GET requests and directly parsed by BeautifulSoup"""
     html = get(url)
