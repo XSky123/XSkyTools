@@ -9,6 +9,7 @@
 ----------------------------------------
 """
 import re
+import urlparse
 import requests
 from bs4 import BeautifulSoup as bs
 _USER_AGENT = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
@@ -54,6 +55,14 @@ def _get_coding(response):
         coding = "utf-8"
 
     return coding
+
+
+def format_url(url):
+    """ format url, add scheme(default http)"""
+    if not re.match("^(.*?:\/\/|\/\/)", url):  # check scheme
+        url = "http://%s" % url
+
+    return url
 
 
 def main():
