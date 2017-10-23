@@ -58,9 +58,12 @@ def _get_coding(response):
 
 
 def format_url(url):
-    """ format url, add scheme(default http)"""
+    """ format url, add scheme(default http) and delete end-hash if has."""
     if not re.match("^(.*?:\/\/|\/\/)", url):  # check scheme
         url = "http://%s" % url
+
+    if url.endswith('/'):
+        url = url[:-1]
 
     return url
 
