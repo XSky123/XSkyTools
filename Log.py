@@ -44,6 +44,10 @@ def warning(content):
     _logger.warning(content)
 
 
+def error(content):
+    _logger.error(content)
+
+
 def main():
     set_debug_mode()
     info("This is an info.")
