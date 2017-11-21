@@ -35,7 +35,7 @@ def line(style=1, length=40):
     elif style == 3:
         for i in range(length):
             l += "-"
-            
+
     print l
 
 
@@ -51,7 +51,7 @@ def menu(choices):
     # show choices
     line(length=30)
     for i, choice in enumerate(choices):
-        print "  [%d] %s" % (i+1, choice)
+        print "[%d] %s" % (i+1, choice)
     line(length=30)
     while True:
         choice = int(raw_input("  Input: "))
