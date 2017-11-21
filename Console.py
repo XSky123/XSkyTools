@@ -23,20 +23,20 @@ def line(style=1, length=40):
 
     :param length:
     """
+    l = ""
     if style == 1:
         for i in range(length):
-            print '=',
-        print '\n'
+            l += "="
 
     elif style == 2:
         for i in range(length):
-            print '*',
-        print '\n'
+            l += "*",
 
     elif style == 3:
         for i in range(length):
-            print '-',
-        print '\n'
+            l += "-"
+            
+    print l
 
 
 def menu(choices):
