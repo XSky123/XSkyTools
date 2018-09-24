@@ -36,7 +36,7 @@ def line(style=1, length=40):
         for i in range(length):
             l += "-"
 
-    print l
+    print(l)
 
 
 def menu(choices):
@@ -51,14 +51,34 @@ def menu(choices):
     # show choices
     line(length=30)
     for i, choice in enumerate(choices):
-        print "[%d] %s" % (i+1, choice)
+        print("[%d] %s" % (i+1, choice))
     line(length=30)
     while True:
-        choice = int(raw_input("  Input: "))
+        choice = int(input("  Input: "))
         if 0 < choice <= len(choices):
             break
 
     return choice-1
+
+
+def input_c(tips):  # input  confirm
+    while True:
+        tmp = input("* {}: ".format(tips))
+        if tmp == "":
+            confirm = input("Your input is nothing. [y] to confirm: ")
+        else:
+            confirm = input("Your input is {}. [y] to confirm: ".format(tmp))
+        if confirm == "y":
+            return tmp
+        else:
+            print("Retry.")
+
+
+def input_b(tips): # input bool
+    tmp = input("* {}? [y] for yes. [other] for no".format(tips))
+    if tmp == "" or tmp == "y":
+        return True
+    return False
 
 
 def main():
