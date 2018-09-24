@@ -61,21 +61,35 @@ def menu(choices):
     return choice-1
 
 
-def input_c(tips):  # input  confirm
+def input_r(tips):
+    ''' input with back view'''
+    tmp = input("* {} > ".format(tips))
+    if tmp == "":
+        confirm = "nothing"
+    else:
+        confirm = tmp
+
+    print("> {}".format(confirm))
+    return tmp
+
+
+def input_c(tips):
+    ''' input and confirm'''
     while True:
-        tmp = input("* {}: ".format(tips))
+        tmp = input("* {} > ".format(tips))
         if tmp == "":
-            confirm = input("Your input is nothing. [y] to confirm: ")
+            confirm = input("> nothing\n> press [Enter] to confirm > ")
         else:
-            confirm = input("Your input is {}. [y] to confirm: ".format(tmp))
-        if confirm == "y":
+            confirm = input("> {}\n> press [Enter] to confirm > ".format(tmp))
+        if confirm == "" or confirm == "y":
             return tmp
         else:
-            print("Retry.")
+            print("* Retry")
 
 
-def input_b(tips): # input bool
-    tmp = input("* {}? [y] for yes. [other] for no".format(tips))
+def input_b(tips): 
+    ''' input bool '''
+    tmp = input("* {}?\nInput [y] for yes > ".format(tips))
     if tmp == "" or tmp == "y":
         return True
     return False
